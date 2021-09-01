@@ -27,6 +27,7 @@ dependencies:
   flutter_inappwebview: ^5.3.2
 
 dev_dependencies:
+  flutter_native_splash: ^1.2.1
   flutter_test:
     sdk: flutter
   pedantic_mono: ^1.13.0+3
@@ -76,3 +77,7 @@ flutter:
     - family: Yomogi
       fonts:
         - asset: assets/fonts/Yomogi-Regular.ttf
+
+flutter_native_splash:
+  color: "#64C9CF"
+  image: assets/images/logo.png
