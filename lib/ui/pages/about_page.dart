@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../ui/components/index.dart';
 
@@ -11,7 +12,22 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: simpleAppBar(context, 'このアプリについて'),
-      body: const CustomWebView(url: url),
+      body: CustomWebView(
+        url: url,
+        onLoadResourceCustomScheme: (controller, _) async {
+          final url = await controller.getUrl();
+          await controller.stopLoading();
+          final action = url.toString().replaceAll('yochy-mobile:', '');
+          if (action == 'openContactForm') {
+            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSetLQIcyNt628Er-HqRlPGZKZP97a095m7O8lvtUNO2dv4S8Q/viewform?usp=sf_link';
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              showErrorModal(context, 'エラーが発生しました');
+            }
+          }
+        },
+      ),
     );
   }
 }

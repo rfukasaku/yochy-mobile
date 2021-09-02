@@ -30,3 +30,21 @@ Future<bool> showConfirmModal(BuildContext context, String message) async {
   );
   return isConfirmed;
 }
+
+void showErrorModal(BuildContext context, String message) {
+  showDialog<void>(
+    context: context,
+    builder: (context) {
+      return CupertinoAlertDialog(
+        title: const Text('エラー'),
+        content: Text(message),
+        actions: <Widget>[
+          CupertinoDialogAction(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
