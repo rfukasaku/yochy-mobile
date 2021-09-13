@@ -34,7 +34,8 @@ class _CustomWebViewState extends State<CustomWebView> {
           initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
           initialOptions: InAppWebViewGroupOptions(
             crossPlatform: InAppWebViewOptions(
-              clearCache: false,
+              cacheEnabled: false,
+              clearCache: true,
               supportZoom: false,
               transparentBackground: true,
               resourceCustomSchemes: const ['yochy-mobile'],
