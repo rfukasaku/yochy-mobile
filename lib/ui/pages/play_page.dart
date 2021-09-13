@@ -27,6 +27,13 @@ class PlayPage extends StatelessWidget {
               if (await showConfirmModal(context, endMessage)) {
                 Navigator.pop(context);
               }
+              return;
+            }
+            if (action == 'showErrorModal') {
+              showErrorModal(
+                context,
+                'エラーが発生しました。この画面を閉じて終了してください。',
+              );
             }
           },
         ),
