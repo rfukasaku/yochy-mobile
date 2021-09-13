@@ -18,6 +18,8 @@ class CustomWebView extends StatefulWidget {
 
 class _CustomWebViewState extends State<CustomWebView> {
   bool loading = true;
+  bool showErrorMessage = false;
+  String errorMessage = '読み込みに失敗しました\n\n何度も失敗する場合は\n\nアプリの再起動をお試しください';
 
   @override
   void initState() {
@@ -51,7 +53,22 @@ class _CustomWebViewState extends State<CustomWebView> {
               setState(() => loading = false);
             }
           },
+          onLoadError: (controller, uri, code, message) {
+            // NOTE: -999 操作を完了できませんでした。（NSURLErrorDomainエラー-999）
+            if (code != -999) {
+              setState(() => showErrorMessage = true);
+            }
+          },
         ),
+        showErrorMessage
+            ? Center(
+                child: Text(
+                  errorMessage,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )
+            : Container(),
         loading
             ? const Center(
                 child: CircularProgressIndicator(color: Color(0xFFDF711B)),
