@@ -7,14 +7,14 @@ import 'about_page.dart';
 import 'play_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
   static const route = '/';
-  static const url = 'https://yochy-cea25.web.app/?from=mobile';
+
+  final url = 'https://yochy-cea25.web.app/?from=mobile';
+  final inAppReview = InAppReview.instance;
 
   @override
   Widget build(BuildContext context) {
-    final inAppReview = InAppReview.instance;
-
     return Scaffold(
       appBar: simpleAppBar(context, 'ホーム'),
       body: CustomWebView(
@@ -31,8 +31,6 @@ class HomePage extends StatelessWidget {
               final playCount = prefs.getInt('playCount') ?? 0;
               final newPlayCount = playCount + 1;
               await prefs.setInt('playCount', newPlayCount);
-
-              debugPrint('newPlayCount: $newPlayCount');
 
               // NOTE: 2回目または100回に1回、レビュー依頼を出す
               if (newPlayCount == 2 || newPlayCount % 100 == 0) {

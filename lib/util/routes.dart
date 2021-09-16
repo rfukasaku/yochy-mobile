@@ -13,7 +13,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       case HomePage.route:
         return MaterialPageRoute<dynamic>(
           settings: routeSettings,
-          builder: (_) => const HomePage(),
+          builder: (_) => HomePage(),
         );
       case PlayPage.route:
         return MaterialPageRoute<dynamic>(
