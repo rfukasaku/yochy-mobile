@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'ヨッチー',
       debugShowCheckedModeBanner: false,
       theme: defaultTheme,
-      onGenerateRoute: Routes.generateRoute,
-      onUnknownRoute: Routes.errorRoute,
+      onGenerateRoute: generateRoute,
+      onUnknownRoute: errorRoute,
     );
   }
 }
