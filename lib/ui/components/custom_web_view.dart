@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
+import '../../util/app_colors.dart';
+
 class CustomWebView extends StatefulWidget {
   const CustomWebView({
     Key? key,
@@ -72,7 +74,7 @@ class _CustomWebViewState extends State<CustomWebView> {
             : Container(),
         loading
             ? const Center(
-                child: CircularProgressIndicator(color: Color(0xFFDF711B)),
+                child: CircularProgressIndicator(color: AppColors.primary),
               )
             : Container(),
       ],
