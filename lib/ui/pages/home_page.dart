@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   static const route = '/';
 
-  final url = 'https://yochy-cea25.web.app/?from=mobile';
+  final url = '/';
   final inAppReview = InAppReview.instance;
 
   @override

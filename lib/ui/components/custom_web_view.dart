@@ -18,6 +18,8 @@ class CustomWebView extends StatefulWidget {
 }
 
 class _CustomWebViewState extends State<CustomWebView> {
+  String baseUrl = 'https://yochy-cea25.web.app';
+  String query = '?from=mobile';
   bool loading = true;
   bool showErrorMessage = false;
   String errorMessage = '読み込みに失敗しました\n\n何度も失敗する場合は\n\nアプリの再起動をお試しください';
@@ -32,11 +34,11 @@ class _CustomWebViewState extends State<CustomWebView> {
     return Stack(
       children: [
         InAppWebView(
-          initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+          initialUrlRequest: URLRequest(
+            url: Uri.parse(baseUrl + widget.url + query),
+          ),
           initialOptions: InAppWebViewGroupOptions(
             crossPlatform: InAppWebViewOptions(
-              cacheEnabled: false,
-              clearCache: true,
               supportZoom: false,
               transparentBackground: true,
               resourceCustomSchemes: const ['yochy-mobile'],

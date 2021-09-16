@@ -6,7 +6,7 @@ import '../components/index.dart';
 class PlayPage extends StatelessWidget {
   const PlayPage({Key? key}) : super(key: key);
   static const route = '/play';
-  static const url = 'https://yochy-cea25.web.app/play/?from=mobile';
+  static const url = '/play';
   static const endMessage = '終了しますか？';
 
   @override

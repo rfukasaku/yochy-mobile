@@ -6,7 +6,7 @@ import '../../ui/components/index.dart';
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);
   static const route = '/about';
-  static const url = 'https://yochy-cea25.web.app/about/?from=mobile';
+  static const url = '/about';
   static const contactFormUrl =
       'https://docs.google.com/forms/d/e/1FAIpQLSetLQIcyNt628Er-HqRlPGZKZP97a095m7O8lvtUNO2dv4S8Q/viewform?usp=sf_link';
 
