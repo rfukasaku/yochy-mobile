@@ -7,12 +7,11 @@ class CustomWebView extends StatefulWidget {
   const CustomWebView({
     Key? key,
     required this.url,
-    this.onLoadResourceCustomScheme,
+    required this.customSchemeAction,
   }) : super(key: key);
 
   final String url;
-  final Future<CustomSchemeResponse?> Function(InAppWebViewController, Uri)?
-      onLoadResourceCustomScheme;
+  final Future<void> Function(String) customSchemeAction;
 
   @override
   _CustomWebViewState createState() => _CustomWebViewState();
@@ -50,7 +49,12 @@ class _CustomWebViewState extends State<CustomWebView> {
               enableViewportScale: true,
             ),
           ),
-          onLoadResourceCustomScheme: widget.onLoadResourceCustomScheme,
+          onLoadResourceCustomScheme: (controller, _) async {
+            final url = await controller.getUrl();
+            await controller.stopLoading();
+            final action = url.toString().replaceAll('yochy-mobile:', '');
+            await widget.customSchemeAction(action);
+          },
           onProgressChanged: (_, progress) {
             if (progress == 100) {
               setState(() => loading = false);

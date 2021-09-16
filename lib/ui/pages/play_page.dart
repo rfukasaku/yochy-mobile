@@ -19,10 +19,7 @@ class PlayPage extends StatelessWidget {
         appBar: simpleAppBar(context, 'あそぶ'),
         body: CustomWebView(
           url: url,
-          onLoadResourceCustomScheme: (controller, _) async {
-            final url = await controller.getUrl();
-            await controller.stopLoading();
-            final action = url.toString().replaceAll('yochy-mobile:', '');
+          customSchemeAction: (action) async {
             if (action == 'backToHomePage') {
               if (await showConfirmModal(context, endMessage)) {
                 Navigator.pop(context);

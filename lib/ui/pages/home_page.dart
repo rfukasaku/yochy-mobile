@@ -19,10 +19,7 @@ class HomePage extends StatelessWidget {
       appBar: simpleAppBar(context, 'ホーム'),
       body: CustomWebView(
         url: url,
-        onLoadResourceCustomScheme: (controller, _) async {
-          final url = await controller.getUrl();
-          await controller.stopLoading();
-          final action = url.toString().replaceAll('yochy-mobile:', '');
+        customSchemeAction: (action) async {
           if (action == 'goToPlayPage') {
             await Navigator.pushNamed(context, PlayPage.route);
 
